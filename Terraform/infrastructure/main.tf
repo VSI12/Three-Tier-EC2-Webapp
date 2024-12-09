@@ -1,8 +1,8 @@
 terraform {
 
     backend "s3" {
-      bucket         = "ids-project-terraform-state"
-      key            = "tf-state/terraform.tfstate"
+      bucket         = "three-tier-ec2-backend-tfstate"
+      key            = "three-tier-ec2-backend-tflock"
       region         = "us-east-1"
       dynamodb_table = "ids-terraform-lock"
       encrypt        = true
@@ -20,3 +20,6 @@ provider "aws" {
     region = "us-east-1"
 }
 
+module "vpc" {
+    source = "./modules/vpc"
+}
