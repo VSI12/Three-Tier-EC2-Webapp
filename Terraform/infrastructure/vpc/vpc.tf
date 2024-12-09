@@ -17,7 +17,8 @@ resource "aws_internet_gateway" "three-tier_igw" {
   }
 }
 
-resource "aws_internet_gateway_attachment" "three-tier_igw" {
-  internet_gateway_id = aws_internet_gateway.three-tier_igw.id
-  vpc_id              = aws_vpc.three-tier_vpc.id
-}
+  resource "aws_route" "three-tier_route" {
+    destination_cidr_block = "0.0.0.0/0"
+    gateway_id = aws_internet_gateway.three-tier_igw.id
+    route_table_id = aws_vpc.three-tier_vpc.main_route_table_id
+  }
