@@ -5,7 +5,7 @@ resource "aws_vpc" "three-tier_vpc" {
   enable_dns_hostnames = true
 
   tags = {
-    name = "three-tier-vpc"
+    Name = "three-tier-vpc"
   }
 }
 #interget gateway to give vpc internet access
@@ -13,7 +13,7 @@ resource "aws_internet_gateway" "three-tier_igw" {
   vpc_id = aws_vpc.three-tier_vpc.id
 
   tags = {
-    name = "three-tier-igw"
+    Name = "three-tier-igw"
   }
 }
 
@@ -30,7 +30,7 @@ resource "aws_internet_gateway" "three-tier_igw" {
     availability_zone = "us-east-1a"
 
     tags = {
-      name = "three-tier-public-subnet-a"
+      Name = "three-tier-public-subnet-a"
     }
   }
     resource "aws_subnet" "three-tier_public_subnet-b" {
@@ -39,7 +39,7 @@ resource "aws_internet_gateway" "three-tier_igw" {
     availability_zone = "us-east-1b"
 
     tags = {
-      name = "three-tier-public-subnet-b"
+      Name = "three-tier-public-subnet-b"
     }
   }
 
@@ -52,7 +52,7 @@ resource "aws_subnet" "three-tier_private_subnet-a" {
     availability_zone = "us-east-1a"
 
     tags = {
-      name = "three-tier-private-subnet-a"
+      Name = "three-tier-private-subnet-a"
     }
   }
 resource "aws_subnet" "three-tier_private_subnet-b" {
@@ -61,7 +61,7 @@ resource "aws_subnet" "three-tier_private_subnet-b" {
     availability_zone = "us-east-1b"
 
     tags = {
-      name = "three-tier-private-subnet-b"
+      Name = "three-tier-private-subnet-b"
     }
   }
 
@@ -69,7 +69,7 @@ resource "aws_subnet" "three-tier_private_subnet-b" {
     vpc_id = aws_vpc.three-tier_vpc.id
 
     tags = {
-      name = "three-tier-private-route-table"
+      Name = "three-tier-private-route-table"
     }
   }
 
